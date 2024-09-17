@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/desktop.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Game Client</title>
+  </head>
+
+  <style>
+    * {
+      user-select: none;
+      font-size: 18px;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      color: #AAA;
+    }
+
+    html,body {
+      background-color: #000;
+    }
+
+    #initialLoadingSpinner {
+      display: flex;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 128px;
+      height: 128px;
+      transform: translate(-50%,-50%);
+      background-color: transparent;
+    }
+
+    #initialLoadingSpinner>img {
+      -webkit-animation-name: spin;
+      -webkit-animation-duration: 4000ms;
+      -webkit-animation-iteration-count: infinite;
+      -webkit-animation-timing-function: linear;
+      -moz-animation-name: spin;
+      -moz-animation-duration: 4000ms;
+      -moz-animation-iteration-count: infinite;
+      -moz-animation-timing-function: linear;
+      -ms-animation-name: spin;
+      -ms-animation-duration: 4000ms;
+      -ms-animation-iteration-count: infinite;
+      -ms-animation-timing-function: linear;
+      animation-name: spin;
+      animation-duration: 4000ms;
+      animation-iteration-count: infinite;
+      animation-timing-function: linear;
+    }
+
+    @-ms-keyframes spin {
+      from { -ms-transform: rotate(0deg); }
+      to { -ms-transform: rotate(360deg); }
+    }
+    @-moz-keyframes spin {
+      from { -moz-transform: rotate(0deg); }
+      to { -moz-transform: rotate(360deg); }
+    }
+    @-webkit-keyframes spin {
+      from { -webkit-transform: rotate(0deg); }
+      to { -webkit-transform: rotate(360deg); }
+    }
+    @keyframes spin {
+      from {
+        transform:rotate(0deg);
+      }
+      to {
+        transform:rotate(360deg);
+      }
+    }
+  </style>
+
+  <body>
+    <header>
+      <p style="position: absolute; top: 0; left: 50%; transform: translate(-50%,0%); justify-content: center; align-items: center; text-align: center; padding: 48px;">
+        Game Client
+      </p>
+    </header>
+
+    <div id="initialLoadingSpinner">
+      <img src="/spinner.svg"/>
+    </div>
+
+    <div id="ui-layer">
+    </div>
+
+    <footer>
+      <p style="position: absolute; bottom: 0; left: 50%; transform: translate(-50%,0%); justify-content: center; align-items: center; text-align: center; padding: 48px">
+        Created By Owen Easter
+      </p>
+    </footer>
+  </body>
+
+  <script type="module" src="/src/main.tsx"></script>
+</html>
