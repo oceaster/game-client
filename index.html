@@ -19,34 +19,74 @@
     }
 
     html,body {
+      overflow: hidden;
+      width: 100vw;
+      height: 100vh;
       background-color: #000;
     }
 
     #initialLoadingSpinner {
       display: flex;
+      flex-direction: column;
       position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 128px;
-      height: 128px;
-      transform: translate(-50%,-50%);
+      justify-content: center;
+      align-items: center;
+
+      top: 0;
+      left: 0;
+
+      width: 100vw;
+      height: 100vh;
+
       background-color: transparent;
     }
 
-    #initialLoadingSpinner>img {
+    #initialLoadingSpinnerOuterImg {
+      z-index: 0;
+      border-radius: 50%;
+
+      width: 100%;
+      height: auto;
+
       -webkit-animation-name: spin;
-      -webkit-animation-duration: 4000ms;
+      -webkit-animation-duration: 8000ms;
       -webkit-animation-iteration-count: infinite;
       -webkit-animation-timing-function: linear;
       -moz-animation-name: spin;
-      -moz-animation-duration: 4000ms;
+      -moz-animation-duration: 8000ms;
       -moz-animation-iteration-count: infinite;
       -moz-animation-timing-function: linear;
       -ms-animation-name: spin;
-      -ms-animation-duration: 4000ms;
+      -ms-animation-duration: 8000ms;
       -ms-animation-iteration-count: infinite;
       -ms-animation-timing-function: linear;
       animation-name: spin;
+      animation-duration: 8000ms;
+      animation-iteration-count: infinite;
+      animation-timing-function: linear;
+    }
+
+    #initialLoadingSpinnerInnerImg {
+      z-index: 0;
+      display: flex;
+      position: absolute;
+
+      width: 50%;
+      height: 50%;
+
+      -webkit-animation-name: reverse;
+      -webkit-animation-duration: 4000ms;
+      -webkit-animation-iteration-count: infinite;
+      -webkit-animation-timing-function: linear;
+      -moz-animation-name: reverse;
+      -moz-animation-duration: 4000ms;
+      -moz-animation-iteration-count: infinite;
+      -moz-animation-timing-function: linear;
+      -ms-animation-name: reverse;
+      -ms-animation-duration: 4000ms;
+      -ms-animation-iteration-count: infinite;
+      -ms-animation-timing-function: linear;
+      animation-name: reverse;
       animation-duration: 4000ms;
       animation-iteration-count: infinite;
       animation-timing-function: linear;
@@ -72,17 +112,39 @@
         transform:rotate(360deg);
       }
     }
+
+    @-ms-keyframes reverse {
+      from { -ms-transform: rotate(360deg); }
+      to { -ms-transform: rotate(0deg); }
+    }
+    @-moz-keyframes reverse {
+      from { -moz-transform: rotate(360deg); }
+      to { -moz-transform: rotate(0deg); }
+    }
+    @-webkit-keyframes reverse {
+      from { -webkit-transform: rotate(360deg); }
+      to { -webkit-transform: rotate(0deg); }
+    }
+    @keyframes reverse {
+      from {
+        transform:rotate(360deg);
+      }
+      to {
+        transform:rotate(0deg);
+      }
+    }
   </style>
 
   <body>
     <header>
       <p style="position: absolute; top: 0; left: 50%; transform: translate(-50%,0%); justify-content: center; align-items: center; text-align: center; padding: 48px;">
-        Game Client
+        Mythic Quest: Divine Shadow
       </p>
     </header>
 
     <div id="initialLoadingSpinner">
-      <img src="/spinner.svg"/>
+      <img id="initialLoadingSpinnerOuterImg" src="/spinner.svg"/>
+      <img id="initialLoadingSpinnerInnerImg" src="/spinner.svg"/>
     </div>
 
     <div id="ui-layer">
@@ -90,7 +152,7 @@
 
     <footer>
       <p style="position: absolute; bottom: 0; left: 50%; transform: translate(-50%,0%); justify-content: center; align-items: center; text-align: center; padding: 48px">
-        Created By Owen Easter
+        Loading...
       </p>
     </footer>
   </body>

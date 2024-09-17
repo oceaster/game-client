@@ -11,6 +11,7 @@ import enterFullscreenSVG from '../../../assets/svgs/enterFullscreen.svg';
 import { useRef, useState, useEffect } from 'react';
 import { enterFullscreen, exitFullscreen } from '../../../library/fullscreen';
 
+
 const MainMenu = () => {
   const [scene, setScene] = useState<string>('main');
   const [isFS, setFS] = useState<boolean>(document.fullscreenElement !== null);
@@ -35,13 +36,14 @@ const MainMenu = () => {
     return document.removeEventListener("fullscreenchange", fullscreenCallback);
   }, [isFS]);
 
-  return <>
+  return <div className="viewContainer">
     <audio ref={audioRef} src={mainAudioMp3} autoPlay={true} loop={true} />
     <img className="mainMenuBackground" src={mainBackground} />
     {
       scene === 'main' ? <>
         <div className="mainMenuContainer">
           <h1>Mythic Quest</h1>
+          <h2>Divine Shadow</h2>
 
           <div className="btn-grp1">
             <button onClick={() => setScene('game')}><p>Start Game</p></button>
@@ -73,7 +75,7 @@ const MainMenu = () => {
       </> : <>
       </>
     }
-  </>
+  </div>
 };
 
 export default MainMenu;
