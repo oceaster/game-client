@@ -15,6 +15,8 @@ import errorSVG from '../../../assets/svgs/error.svg';
 import spinnerSVG from '../../../assets/svgs/spinner.svg';
 import noConnectionSVG from '../../../assets/svgs/noConnection.svg';
 
+import CharacterCreator from './cc';
+
 // Components
 import { VolumeSlider } from './slider';
 
@@ -63,13 +65,15 @@ const MainMenu = () => {
     <audio ref={audioRef} src={mainAudioMp3} autoPlay={true} loop={true} />
     <img className="mainMenuBackground" src={mainBackground} />
     {
+
       scene === 'main' ? <>
+
         <div className="mainMenuContainer">
           <h1>TITLE</h1>
           <h2>SubTitle</h2>
 
           <div className="btn-grp1">
-            <button onClick={() => setScene('status')}><p>Start Game</p></button>
+            <button onClick={() => setScene('start')}><p>Start Game</p></button>
             <button onClick={() => setScene('settings')}><p>Settings</p></button>
           </div>
 
@@ -80,35 +84,58 @@ const MainMenu = () => {
             <button onClick={() => { isFS ? exitFS() : enterFS() }}><img src={isFS ? exitFullscreenSVG : enterFullscreenSVG} /></button>
           </div>
         </div>
+
+      </> : scene === 'start' ? <>
+
+        <div className="mainMenuContainer2">
+          <button className="closeMenuButton" onClick={() => setScene('main')}><img src={closeSVG} /></button>
+          <CharacterCreator />
+        </div>
+
       </> : scene === 'status' ? <>
         <div className="mainMenuContainer2">
           <button className="closeMenuButton" onClick={() => setScene('main')}><img src={closeSVG} /></button>
           <NoConnectionError />
         </div>
+
       </> : scene === 'friends' ? <>
+
         <div className="mainMenuContainer2">
           <button className="closeMenuButton" onClick={() => setScene('main')}><img src={closeSVG} /></button>
           <NoConnectionError />
         </div>
+
       </> : scene === 'settings' ? <>
+
         <div className="mainMenuContainer2">
           <button className="closeMenuButton" onClick={() => setScene('main')}><img src={closeSVG} /></button>
 
           <div className="menuContent">
-            <h2>Music Volume</h2>
-            <VolumeSlider />
-            <h2>Effects Volume</h2>
-            <VolumeSlider />
-            <h2>Voice Volume</h2>
-            <VolumeSlider />
-            <hr />
+            <h2 style={{ fontSize: '28px' }}>Sound</h2>
+            <div style={{
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+              alignItems: 'center',
+              width: '100%',
+              padding: '24px',
+              borderTop: '1px solid #AAA',
+              borderBottom: '1px solid #AAA',
+            }}>
+              <h2>Music</h2>
+              <VolumeSlider />
+              <h2>Effects</h2>
+              <VolumeSlider />
+              <h2>Ambience</h2>
+              <VolumeSlider />
+            </div>
           </div>
-
           <div className="lowerMenuButtonsContainer">
             <button onClick={() => setScene('main')}>Accept</button>
             <button onClick={() => setScene('main')}>Cancel</button>
           </div>
         </div>
+
       </> : <>
       </>
     }

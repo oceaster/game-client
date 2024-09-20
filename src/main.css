@@ -1,3 +1,8 @@
+
+* {
+  font-family: 'pixel';
+}
+
 #ui-layer {
   z-index: 2;
   display: flex;
@@ -35,3 +40,4 @@ canvas {
 
   background-color: #202029;
 }
+

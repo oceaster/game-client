@@ -1,0 +1,21 @@
+
+#cc-canvas {
+  z-index: 0 !important;
+  display: flex !important;
+  position: relative !important;
+
+  top: unset !important;
+  left: unset !important;
+  transform: none !important;
+
+  margin: 12px auto 0 auto;
+
+  min-width: 300px !important;
+  width: calc(90% - 42px) !important;
+  max-width: 960px !important;
+
+  min-height: 300px !important;
+  height: calc(50% - 42px) !important;
+  max-height: 640px !important;
+}
+
